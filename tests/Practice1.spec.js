@@ -23,7 +23,7 @@ test('Register and login', async({page})=>{
     await page.waitForTimeout(5000);
 })
 
-test.only('Login and get 1st item name',async({page})=>{
+test('Login and get 1st item name',async({page})=>{
 
     await page.goto('https://rahulshettyacademy.com/client/#/auth/login')
     await page.locator('#userEmail').fill('SushmitaDummy5@gmail.com');  // using ID
@@ -36,5 +36,22 @@ test.only('Login and get 1st item name',async({page})=>{
     //console.log(await page.getByText('ADIDAS ORIGINAL'));
     //console.log(await page.locator('b'));
     //await page.waitForTimeout(5000);
+
+})
+
+
+test.only('Select from Dropdown and checkbox',async({page})=> {
+    await page.goto('https://rahulshettyacademy.com/client/#/auth/login')
+    console.log(await page.title());
+    await page.locator('.btn1').click();
+    await page.getByPlaceholder('First Name').fill('Sushmita');
+    await page.getByPlaceholder('Last Name').fill('Dummy');
+    await page.locator('select[formcontrolname="occupation"]').selectOption({ label: 'Engineer' });
+    await page.locator("input[value='Female']").check();
+    
+
+    await page.waitForTimeout(6000);
+
+
 
 })
